@@ -188,9 +188,10 @@
 
 <script>
   import {TweenMax, Expo, Power2} from 'gsap/all';
+  import {requestLogin} from '@/api/user';
 
   export default {
-    name: 'AppLogin',
+    name: 'Login',
     data() {
       return {
         logining: false,
@@ -210,7 +211,27 @@
         checked: false
       }
     },
-    mounted: () => {
+    methods: {
+      handleSubmit(ev) {
+        this.$refs.ruleForm.validate((valid) => {
+          if (valid) {
+            requestLogin({'email': this.ruleForm.email, 'password': this.ruleForm.password}).then(data => {
+              console.log(data);
+            });
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        })
+      }
+    },
+    beforeRouteEnter(to, from, next) {
+      next(vm => {
+        if (from.fullPath !== '/register' && !from.meta.errorPage) {
+          vm.fromUrl = from.fullPath;
+        }
+      })
+    }, mounted: () => {
       /* eslint-disable */
       let email = document.querySelector('#loginEmail'),
         password = document.querySelector('#loginPassword'),
@@ -637,24 +658,6 @@
       }
 
       initLoginForm();
-    },
-    methods: {
-      handleSubmit(ev) {
-        this.$refs.ruleForm.validate((valid) => {
-          if (valid) {
-          } else {
-            console.log('error submit!!');
-            return false;
-          }
-        })
-      }
-    },
-    beforeRouteEnter(to, from, next) {
-      next(vm => {
-        if (from.fullPath !== '/register' && !from.meta.errorPage) {
-          vm.fromUrl = from.fullPath;
-        }
-      })
     }
   }
 

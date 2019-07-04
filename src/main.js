@@ -5,9 +5,10 @@ import App from './App';
 import router from './router';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import Mock from './mock/index';
 
 Vue.config.productionTip = true;
-
+Mock.mockData();
 Vue.use(ElementUI);
 
 /* eslint-disable no-new */

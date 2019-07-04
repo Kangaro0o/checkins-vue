@@ -1,5 +1,5 @@
 export default {
-  baseURL: 'localhost:8080/',
+  baseURL: '',
   headers: {
     'Content-Type': 'application/json; charset=UTF-8; multipart/form-data;'
   },
