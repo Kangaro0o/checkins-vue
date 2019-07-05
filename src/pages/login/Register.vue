@@ -157,17 +157,17 @@
       <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-position="left" label-width="0px"
                class="demo-ruleForm login-container" status-icon>
         <h3 class="title">KK签到-注册</h3>
-        <el-form-item prop="account">
-          <el-input type="text" v-model="ruleForm.account" auto-complete="off" placeholder=""
-                    id="loginEmail"></el-input>
+        <el-form-item prop="name">
+          <el-input type="text" v-model="ruleForm.name" auto-complete="off" placeholder="用户名"
+                    id="name"></el-input>
+        </el-form-item>
+        <el-form-item prop="email">
+          <el-input type="text" v-model="ruleForm.email" auto-complete="off" placeholder="邮箱"
+                    id="email"></el-input>
         </el-form-item>
         <el-form-item prop="password">
-          <el-input type="password" v-model="ruleForm.password" auto-complete="off" placeholder=""
-                    id="loginPassword"></el-input>
-        </el-form-item>
-        <el-form-item prop="checkPass">
-          <el-input type="password" v-model="ruleForm.checkPass" auto-complete="off" placeholder="$t('login.checkPass')"
-                    id="loginCheckPass"></el-input>
+          <el-input type="password" v-model="ruleForm.password" auto-complete="off" placeholder="密码"
+                    id="password"></el-input>
         </el-form-item>
         <el-form-item style="width:100%;">
           <el-button type="primary" style="width:100%;" @click.native.prevent="handleSubmit" :loading="logining">
@@ -192,50 +192,32 @@
   export default {
     name: 'Register',
     data () {
-      let validatePass = (rule, value, callback) => {
-        if (value === '') {
-          callback(new Error(''))
-        } else {
-          if (this.ruleForm.checkPass !== '') {
-            this.$refs.ruleForm.validateField('checkPass')
-          }
-          callback()
-        }
-      };
-      let validatePass2 = (rule, value, callback) => {
-        if (value === '') {
-          callback(new Error(''))
-        } else if (value !== this.ruleForm.password) {
-          callback(new Error(''))
-        } else {
-          callback()
-        }
-      };
       return {
         logining: false,
         ruleForm: {
-          account: '',
-          password: '',
-          checkPass: ''
+          name: '',
+          email: '',
+          password: ''
         },
         rules: {
-          account: [
-            {required: true, message: '', trigger: 'blur'}
+          name: [
+            {required: true, message: '请输入用户名', trigger: 'blur'}
+          ],
+          email: [
+            {required: true, message: '请输入邮箱', trigger: 'blur'},
+            {type: 'email', message: '请输入正确的邮箱地址', trigger: 'blur'}
           ],
           password: [
-            {validator: validatePass, trigger: 'blur'}
-          ],
-          checkPass: [
-            {validator: validatePass2, trigger: 'blur'}
+            {min: 6, required: true, message: '密码至少要6位字符', trigger: 'blur'}
           ]
         }
       }
     },
     mounted: () => {
       /* eslint-disable */
-      let email = document.querySelector('#loginEmail'),
-        password = document.querySelector('#loginPassword'),
-        CheckPass = document.querySelector('#loginCheckPass'),
+      let email = document.querySelector('#name'),
+        password = document.querySelector('#email'),
+        CheckPass = document.querySelector('#password'),
         mySVG = document.querySelector('.svgContainer'), twoFingers = document.querySelector('.twoFingers'),
         armL = document.querySelector('.armL'), armR = document.querySelector('.armR'),
         eyeL = document.querySelector('.eyeL'), eyeR = document.querySelector('.eyeR'),
@@ -531,8 +513,8 @@
         email.addEventListener('input', onEmailInput);
 
         // handle events for password input
-        password.addEventListener('focus', onPasswordFocus);
-        password.addEventListener('blur', onPasswordBlur);
+        password.addEventListener('focus', onEmailFocus);
+        password.addEventListener('blur', onEmailBlur);
         CheckPass.addEventListener('focus', onPasswordFocus);
         CheckPass.addEventListener('blur', onPasswordBlur);
         //passwordLabel.addEventListener('click', onPasswordLabelClick);

@@ -164,12 +164,12 @@
         <el-form-item prop="password">
           <el-input type="password" v-model="ruleForm.password" auto-complete="off" placeholder="密码"
                     id="loginPassword"></el-input>
+        </el-form-item>
+        <el-form-item style="width:100%;">
           <label id="showPasswordToggle">
             <el-checkbox v-model="checked" id="showPasswordCheck">显示密码</el-checkbox>
           </label>
           <router-link to="/" style="float: right; color: #bbbbbb">忘记密码？</router-link>
-        </el-form-item>
-        <el-form-item style="width:100%;">
           <el-button type="primary" style="width:100%;" @click.native.prevent="handleSubmit" :loading="logining">
             登录
           </el-button>
@@ -197,8 +197,8 @@
         logining: false,
         fromUrl: '/',
         ruleForm: {
-          email: 'admin',
-          password: '123456'
+          email: '',
+          password: ''
         },
         rules: {
           email: [
