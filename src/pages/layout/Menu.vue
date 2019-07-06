@@ -1,12 +1,13 @@
 <template>
   <el-header class="header">
-    <el-menu :default-active="activeIndex" mode="horizontal" @select="handleSelect" active-text-color="#1989fa"
+    <el-menu :default-active="$route.path" mode="horizontal" @select="handleSelect" active-text-color="#1989fa" router="true"
              class="menu">
       <el-menu-item>
-      <!--#515151-->
         <img src="../../assets/logo1.svg" alt="" height="54">
       </el-menu-item>
-      <el-menu-item index="1">任务</el-menu-item>
+      <el-menu-item index="/task/create">
+        任务
+      </el-menu-item>
       <el-menu-item index="3">日志</el-menu-item>
       <el-menu-item index="4">个人中心</el-menu-item>
     </el-menu>

@@ -6,7 +6,7 @@
         <el-container>
           <header-menu></header-menu>
           <div class="line"></div>
-          <el-main>Main</el-main>
+          <main-content></main-content>
           <el-footer>Footer</el-footer>
         </el-container>
       </div>
@@ -17,11 +17,13 @@
 
 <script>
   import Menu from './Menu'
+  import Main from './Main'
 
   export default {
     name: "Base",
     components: {
-      'header-menu': Menu
+      'header-menu': Menu,
+      'main-content': Main
     }
   }
 </script>
