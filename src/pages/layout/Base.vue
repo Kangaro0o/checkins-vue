@@ -7,7 +7,7 @@
           <header-menu></header-menu>
           <div class="line"></div>
           <main-content></main-content>
-          <el-footer>Footer</el-footer>
+          <el-footer>&copy; Kelvin since 2019</el-footer>
         </el-container>
       </div>
     </el-col>
@@ -16,14 +16,15 @@
 </template>
 
 <script>
-  import Menu from './Menu'
-  import Main from './Main'
-
+  import Menu from './Menu';
+  import Main from './Main';
+  import Footer from './Footer';
   export default {
     name: "Base",
     components: {
       'header-menu': Menu,
-      'main-content': Main
+      'main-content': Main,
+      'footer1': Footer
     }
   }
 </script>
@@ -40,18 +41,15 @@
   .el-col {
     border-radius: 4px;
   }
-
+  .el-footer {
+    height: 60px;
+    color: #333;
+    text-align: center;
+    line-height: 60px;
+  }
   .grid-content {
     border-radius: 4px;
     min-height: 36px;
-  }
-
-  .el-footer {
-    height: 80px;
-    background-color: #42b983;
-    color: #333;
-    text-align: center;
-    line-height: 80px;
   }
 
   .el-main {
