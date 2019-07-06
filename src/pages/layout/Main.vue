@@ -22,7 +22,7 @@
 
 <style scoped>
   .page-sub-main {
-    background-color: #ebeef5;
+    /*background-color: #ebeef5;*/
     color: #666666;
   }
 </style>

@@ -38,9 +38,8 @@
     background-color: #fff;
     top: 0;
     left: 0;
-    width: 100%;
     z-index: 100;
-    position: relative;
+    position: sticky;
     color: #333;
     text-align: center;
     line-height: 80px;

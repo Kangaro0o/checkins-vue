@@ -30,7 +30,11 @@
 
 <style>
   .el-row {
-    margin-bottom: 20px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
   }
 
   .el-col {
@@ -51,13 +55,10 @@
   }
 
   .el-main {
-    background-color: #E9EEF3;
     color: #333;
     text-align: center;
     line-height: 160px;
   }
 
-  /*body > .el-container {*/
-  /*  margin-bottom: 40px;*/
-  /*}*/
+
 </style>
