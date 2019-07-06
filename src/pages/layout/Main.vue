@@ -1,5 +1,5 @@
 <template>
-  <el-main :style="mainStyle" class="page-sub-main">
+  <el-main :style="mainStyle">
     <transition name="fade" mode="out-in">
       <router-view></router-view>
     </transition>
@@ -10,7 +10,7 @@
   export default {
     name: "Main",
     data() {
-      const win_height = window.innerHeight - 100 + 'px'
+      const win_height = window.innerHeight - 200 + 'px'
       return {
         mainStyle: {
           minHeight: win_height
@@ -21,8 +21,4 @@
 </script>
 
 <style scoped>
-  .page-sub-main {
-    /*background-color: #ebeef5;*/
-    color: #666666;
-  }
 </style>

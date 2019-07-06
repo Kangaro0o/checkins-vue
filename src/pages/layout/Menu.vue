@@ -1,11 +1,11 @@
 <template>
   <el-header class="header">
-    <el-menu :default-active="$route.path" mode="horizontal" @select="handleSelect" active-text-color="#1989fa" router="true"
-             class="menu">
+    <el-menu :default-active="$route.path" mode="horizontal" @select="handleSelect"
+             active-text-color="#1989fa" :router="router" class="menu">
       <el-menu-item>
         <img src="../../assets/logo1.svg" alt="" height="54">
       </el-menu-item>
-      <el-menu-item index="/task/create">
+      <el-menu-item index="/task/">
         任务
       </el-menu-item>
       <el-menu-item index="3">日志</el-menu-item>
@@ -20,8 +20,7 @@
     name: "Menu",
     data() {
       return {
-        activeIndex: '1',
-        activeIndex2: '1'
+        router: true
       };
     },
     methods: {
