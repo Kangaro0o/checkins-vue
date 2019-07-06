@@ -5,6 +5,7 @@
       <div>
         <el-container>
           <header-menu></header-menu>
+          <div class="line"></div>
           <el-main>Main</el-main>
           <el-footer>Footer</el-footer>
         </el-container>
@@ -34,29 +35,14 @@
     border-radius: 4px;
   }
 
-  .bg-purple-dark {
-    background: #99a9bf;
-  }
-
-  .bg-purple {
-    background: #d3dce6;
-  }
-
-  .bg-purple-light {
-    background: #e5e9f2;
-  }
-
   .grid-content {
     border-radius: 4px;
     min-height: 36px;
   }
 
-  .row-bg {
-    padding: 10px 0;
-    background-color: #f9fafc;
-  }
-
   .el-footer {
+    height: 80px;
+    background-color: #42b983;
     color: #333;
     text-align: center;
     line-height: 80px;
@@ -69,7 +55,7 @@
     line-height: 160px;
   }
 
-  body > .el-container {
-    margin-bottom: 40px;
-  }
+  /*body > .el-container {*/
+  /*  margin-bottom: 40px;*/
+  /*}*/
 </style>
