@@ -2,4 +2,8 @@ const user = {
   login: '/api/login'
 };
 
-export {user};
+const task = {
+  list: '/api/task/list'
+};
+
+export {user, task};

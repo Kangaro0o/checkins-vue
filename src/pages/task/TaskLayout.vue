@@ -24,7 +24,7 @@
 
 <style scoped>
   .tabs {
-    top: 60px;
+    top: 50px;
     left: 0;
     position: relative;
   }
