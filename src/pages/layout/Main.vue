@@ -10,7 +10,7 @@
   export default {
     name: "Main",
     data() {
-      const win_height = window.innerHeight - 122 + 'px'
+      const win_height = window.innerHeight - 120 + 'px'
       return {
         mainStyle: {
           minHeight: win_height

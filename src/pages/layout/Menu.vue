@@ -5,7 +5,7 @@
       <el-menu-item>
         <img src="../../assets/logo1.svg" alt="" height="54">
       </el-menu-item>
-      <el-menu-item index="/task/">
+      <el-menu-item index="/task">
         任务
       </el-menu-item>
       <el-menu-item index="3">日志</el-menu-item>
