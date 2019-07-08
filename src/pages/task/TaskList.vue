@@ -1,29 +1,23 @@
 <template>
   <div id="task-list">
-<!--    <el-form :inline="true" :model="formInline" :rules="rules" ref="formInline">-->
-<!--      <el-form-item label="姓名：" prop="name">-->
-<!--        <el-input v-model="formInline.name"></el-input>-->
-<!--      </el-form-item>-->
-<!--      <el-form-item label="手机号：" prop="phone">-->
-<!--        <el-input v-model="formInline.phone"></el-input>-->
-<!--      </el-form-item>-->
-<!--      <el-form-item>-->
-<!--        <el-button type="primary" @click="onSearch('formInline')">查询</el-button>-->
-<!--        <el-button type="default" @click="onClear('formInline')">清空</el-button>-->
-<!--      </el-form-item>-->
-<!--    </el-form>-->
+    <el-form :inline="true" :model="formInline" :rules="rules" ref="formInline">
+      <el-form-item label="姓名：" prop="name">
+        <el-input v-model="formInline.name"></el-input>
+      </el-form-item>
+      <el-form-item label="手机号：" prop="phone">
+        <el-input v-model="formInline.phone"></el-input>
+      </el-form-item>
+      <el-form-item>
+        <el-button type="primary" @click="onSearch('formInline')">查询</el-button>
+        <el-button type="default" @click="onClear('formInline')">清空</el-button>
+      </el-form-item>
+    </el-form>
     <el-table
       border
       ref="multipleTable"
       :data="onePageTableData"
       tooltip-effect="dark"
-      style="width: 100%"
-      @selection-change="handleSelectionChange">
-      <el-table-column
-        align="center"
-        type="selection"
-        width="55">
-      </el-table-column>
+      style="width: 100%">
       <el-table-column
         prop="name"
         align="center"
@@ -51,10 +45,18 @@
       <el-table-column
         align="center"
         label="状态"
-        width="120">
-        <template slot-scope="scope">{{ scope.row.is_work }}</template>
+        width="120"
+        prop="is_Work"
+        :filters="[{ text: '可执行', value: true }, { text: '不可执行', value: false }]"
+        :filter-method="filterTag"
+        filter-placement="bottom-end">
+        <template slot-scope="scope">
+          <el-tag
+            :type="scope.row.is_work === true ? 'success' : 'danger'"
+            disable-transitions>{{scope.row.is_work === true ? '可执行' : '不可执行'}}</el-tag>
+        </template>
       </el-table-column>
-      <el-table-column label="操作">
+      <el-table-column label="操作" align="center">
         <template slot-scope="scope">
           <el-button size="mini">测试</el-button>
           <el-button size="mini" type="warning">编辑</el-button>
@@ -78,6 +80,7 @@
 
 <script>
   import {requestTaskList} from '@/api/task';
+
   export default {
     name: "TaskList",
     created() {
@@ -112,17 +115,10 @@
       handleCurrentChange(currentPage) {
         this.currentPage = currentPage;
       },
-      toggleSelection(rows) {
-        if (rows) {
-          rows.forEach(row => {
-            this.$refs.multipleTable.toggleRowSelection(row);
-          });
-        } else {
-          this.$refs.multipleTable.clearSelection();
-        }
-      },
-      handleSelectionChange(val) {
-        this.multipleSelection = val;
+      filterTag(value, row) {
+        // console.log('value:', value)
+        // console.log('row:', row)
+        return row.is_work === value;
       }
     },
     computed: {
