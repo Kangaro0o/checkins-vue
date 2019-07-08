@@ -1,11 +1,8 @@
 <template>
   <div id="task-list">
-    <el-form :inline="true" :model="formInline" :rules="rules" ref="formInline">
-      <el-form-item label="姓名：" prop="name">
+    <el-form :inline="true" :model="formInline" ref="formInline">
+      <el-form-item label="任务名称：">
         <el-input v-model="formInline.name"></el-input>
-      </el-form-item>
-      <el-form-item label="手机号：" prop="phone">
-        <el-input v-model="formInline.phone"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="onSearch('formInline')">查询</el-button>
@@ -93,12 +90,7 @@
     data() {
       return {
         formInline: {
-          name: '',
-          phone: '',
-          location: ''
-        },
-        rules: {
-          phone: {pattern: /^1[3|4|5|7|8][0-9]\d{8}$/, message: '请输入正确的手机号', trigger: 'change'}
+          name: ''
         },
         tableData: [],
         currentPage: 1,
