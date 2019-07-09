@@ -5,7 +5,7 @@ export default {
     Mock.mock('/api/login', {
       'isOk': 'ok',
       'result': 'login success',
-      'code': 100000
+      'code': 100001
     });
     Mock.mock('/api/site/list', {
       'isOk': 'ok',
