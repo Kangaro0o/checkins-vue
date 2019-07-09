@@ -2,6 +2,7 @@ import Login from '../pages/login/Login'
 import Register from '../pages/login/Register'
 import Base from '../pages/layout/Base'
 import TaskLayout from '../pages/task/TaskLayout'
+import Logger from '../pages/log/Logger';
 
 const staticRouter = [
   {
@@ -14,12 +15,20 @@ const staticRouter = [
     path: '/',
     redirect: '/task'
   }, {
-    name: 'create checkin task',
+    name: 'checkin task',
     path: '/',
     component: Base,
     children: [{
       path: 'task',
       component: TaskLayout
+    }]
+  }, {
+    name: 'task log',
+    path: '/',
+    component: Base,
+    children: [{
+      path: 'log',
+      component: Logger
     }]
   }
 ];

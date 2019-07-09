@@ -1,5 +1,5 @@
 <template>
-  <div id="task-list">
+  <div id="task-log">
     <el-form :inline="true" :model="formInline" ref="formInline">
       <el-form-item label="任务名称：">
         <el-input v-model="formInline.name"></el-input>
@@ -11,54 +11,47 @@
     </el-form>
     <el-table
       border
-      ref="multipleTable"
       :data="onePageTableData"
       tooltip-effect="dark"
       style="width: 100%">
       <el-table-column
+        align="center"
+        prop="id"
+        label="日志ID"
+        width="120">
+      </el-table-column>
+      <el-table-column
         prop="name"
         align="center"
         label="任务名称"
-        width="120">
+        width="220">
       </el-table-column>
       <el-table-column
         align="center"
         prop="site_name"
         label="签到站点"
-        width="120">
+        width="220">
       </el-table-column>
       <el-table-column
         align="center"
-        prop="username"
-        label="站点账号"
-        width="120">
-      </el-table-column>
-      <el-table-column
-        align="center"
-        prop="check_time"
-        label="签到时间"
-        width="120">
-      </el-table-column>
-      <el-table-column
-        align="center"
-        label="状态"
+        label="结果"
         width="120"
-        prop="is_Work"
-        :filters="[{ text: '可执行', value: true }, { text: '不可执行', value: false }]"
+        prop="result"
+        :filters="[{ text: '成功', value: 'success' }, { text: '失败', value: 'error' }]"
         :filter-method="filterTag"
         filter-placement="bottom-end">
         <template slot-scope="scope">
           <el-tag
-            :type="scope.row.is_work === true ? 'success' : 'danger'"
-            disable-transitions>{{scope.row.is_work === true ? '可执行' : '不可执行'}}</el-tag>
+            :type="scope.row.result === 'success' ? 'success' : 'danger'"
+            disable-transitions>{{scope.row.result === 'success' ? '成功' : '失败'}}
+          </el-tag>
         </template>
       </el-table-column>
-      <el-table-column label="操作" align="center">
-        <template slot-scope="scope">
-          <el-button size="mini">测试</el-button>
-          <el-button size="mini" type="warning">编辑</el-button>
-          <el-button size="mini" type="danger">删除</el-button>
-        </template>
+      <el-table-column
+        align="center"
+        prop="real_time"
+        label="签到时间"
+        width="200">
       </el-table-column>
     </el-table>
     <br>
@@ -76,13 +69,13 @@
 </template>
 
 <script>
-  import {requestTaskList} from '@/api/task';
+  import {requestLogList} from '@/api/log';
 
   export default {
-    name: "TaskList",
+    name: "Logger",
     created() {
       // init table data
-      requestTaskList().then(data => {
+      requestLogList().then(data => {
         this.tableData = data.result;
         this.pageTotal = this.tableData.length;
       });
@@ -95,7 +88,7 @@
         tableData: [],
         currentPage: 1,
         pageSize: 10,
-        pageTotal: 0
+        pageTotal: 0,
       }
     },
     methods: {
@@ -107,9 +100,7 @@
         this.currentPage = currentPage;
       },
       filterTag(value, row) {
-        // console.log('value:', value)
-        // console.log('row:', row)
-        return row.is_work === value;
+        return row.result === value;
       }
     },
     computed: {
@@ -121,8 +112,11 @@
 </script>
 
 <style scoped>
-  #task-list {
+  #task-log {
+    top: 50px;
+    left: 0;
+    position: relative;
     width: 80%;
-    margin-left: 50px;
+    margin-left: 90px;
   }
 </style>

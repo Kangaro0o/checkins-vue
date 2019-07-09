@@ -8,7 +8,7 @@
       <el-menu-item index="/task">
         任务
       </el-menu-item>
-      <el-menu-item index="3">日志</el-menu-item>
+      <el-menu-item index="/log">日志</el-menu-item>
       <el-menu-item index="4">个人中心</el-menu-item>
     </el-menu>
 

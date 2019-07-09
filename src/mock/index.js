@@ -49,5 +49,30 @@ export default {
         is_work: true
       }],
     });
+
+    // 日志列表
+    Mock.mock('/api/log/list', {
+      'isOk': 'ok',
+      'code': 10000,
+      'result': [{
+        id: 1,
+        name: 'task1',
+        site_name: '网易云音乐',
+        result: 'success',
+        real_time: '8:05'
+      }, {
+        id: 2,
+        name: 'task2',
+        site_name: '百度贴吧',
+        result: 'error',
+        real_time: '9:10'
+      }, {
+        id: 3,
+        name: 'task3',
+        site_name: '淘宝',
+        result: 'success',
+        real_time: '8:07'
+      }],
+    });
   }
 }

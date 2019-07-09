@@ -19,4 +19,11 @@ const task = {
   list: '/api/task/list'
 };
 
-export {user, task, site};
+/*
+* log 相关
+* */
+const log = {
+  list: '/api/log/list'
+};
+
+export {user, task, site, log};
