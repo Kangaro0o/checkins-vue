@@ -9,7 +9,7 @@
         任务
       </el-menu-item>
       <el-menu-item index="/log">日志</el-menu-item>
-      <el-menu-item index="4">个人中心</el-menu-item>
+      <el-menu-item index="/profile">个人中心</el-menu-item>
     </el-menu>
 
   </el-header>

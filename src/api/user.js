@@ -9,5 +9,12 @@ const requestLogin = params => {
   });
 };
 
+const requestUserInfo = params => {
+  return request({
+    url: user.info,
+    method: 'post',
+    data: params
+  });
+};
 
-export {requestLogin};
+export {requestLogin, requestUserInfo};

@@ -74,5 +74,18 @@ export default {
         real_time: '8:07'
       }],
     });
+
+    // 用户信息
+    Mock.mock('/api/user/info', {
+      'isOk': 'ok',
+      'code': 100001,
+      'result': {
+        'id': 1,
+        'name': 'Kelvin',
+        'email': '260@qq.com',
+        'password': '**********',
+        'time': '2019/7/10'
+      }
+    });
   }
 }

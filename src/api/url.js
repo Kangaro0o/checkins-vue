@@ -2,7 +2,8 @@
 * user 相关
 * */
 const user = {
-  login: '/api/login'
+  login: '/api/login',
+  info: '/api/user/info'
 };
 
 /*
